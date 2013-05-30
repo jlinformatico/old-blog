@@ -1,0 +1,31 @@
+<?php
+
+class UsersController extends BaseController {
+
+    public function get_index() {
+        return View::make('web/users/list')
+                    ->with('title', 'Lista użytkowników')
+                    ->with('users', Users::all());
+    }
+
+    public function get_user($id) {
+        return View::make('web/users/show')
+                    ->with('title', 'Dane użytkownika')
+                    ->with('users', Users::findOrFail($id));
+    }
+
+    public function get_new() {
+        return View::make('web/users/new')
+                    ->with('title', 'Dodaj użytkownika');
+    }
+
+    public function post_create() {
+        Users::insert(array(
+            'name' => Input::get('name'),
+            'email' => Input::get('email')
+        ));
+
+        return Redirect::to('users')
+                        ->with('message', 'Dodałeś nowy rekord!');
+    }
+}
