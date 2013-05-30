@@ -15,7 +15,7 @@
 
 Route::get('/', function()
 {
-	return 'Strona glowna';
+	return time();
 });
 
 /* Blog routes */

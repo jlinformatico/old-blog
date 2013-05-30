@@ -28,7 +28,9 @@ class UsersController extends BaseController {
         } else {
             Users::insert(array(
                 'name' => Input::get('name'),
-                'email' => Input::get('email')
+                'email' => Input::get('email'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ));
 
             return Redirect::to('users')
