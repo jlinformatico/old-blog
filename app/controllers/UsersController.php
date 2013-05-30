@@ -20,12 +20,20 @@ class UsersController extends BaseController {
     }
 
     public function post_create() {
-        Users::insert(array(
-            'name' => Input::get('name'),
-            'email' => Input::get('email')
-        ));
+        $validation = Users::validate(Input::all());
 
-        return Redirect::to('users')
-                        ->with('message', 'Dodałeś nowy rekord!');
+        if ($validation->fails()) {
+            return Redirect::to('users/new')
+                            ->withErrors($validation);
+        } else {
+            Users::insert(array(
+                'name' => Input::get('name'),
+                'email' => Input::get('email')
+            ));
+
+            return Redirect::to('users')
+                            ->with('message', 'Dodałeś nowy rekord!');
+        }
+
     }
 }
