@@ -11,11 +11,15 @@
         <h3>Dodaj użytkownika</h3>
 
         @if($errors->count() > 0)
-            <p>The following errors have occurred:</p>
-            <ul id="form-errors">
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
                 {{ $errors->first('name', '<li>:message</li>') }}
+            </div>
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
                 {{ $errors->first('email', '<li>:message</li>') }}
-            </ul>
+            </div>
+
         @endif
 
         {{ Form::open(array('url' => 'users/create')) }}
