@@ -11,13 +11,10 @@
         <h3>Dodaj użytkownika</h3>
 
         @if($errors->count() > 0)
-            <div class="alert alert-error">
+            <div class="alert alert-error" style="list-style: none;">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                {{ $errors->first('name', '<li>:message</li>') }}
-            </div>
-            <div class="alert alert-error">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                {{ $errors->first('email', '<li>:message</li>') }}
+                <p>{{ $errors->first('name', '<li>:message</li>') }}</p>
+                <p>{{ $errors->first('email', '<li>:message</li>') }}</p>
             </div>
 
         @endif
