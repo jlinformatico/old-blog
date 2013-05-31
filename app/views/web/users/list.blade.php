@@ -5,37 +5,49 @@
 @stop
 
 @section('content')
-
-    <div class="span9">
+<div class="span9">
 
     <h3>Lista użytkowników</h3>
 
-        <table class="table table-striped">
+    @if (Session::has('message'))
 
-          <thead>
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ Session::get('message') }}
+        </div>
+
+    @endif
+
+    <table class="table table-striped">
+
+        <thead>
             <tr>
-              <th>ID</th>
-              <th>Nazwa</th>
-              <th>Adres e-mail</th>
+                <th>ID</th>
+                <th>Nazwa</th>
+                <th>Adres e-mail</th>
             </tr>
-          </thead>
+        </thead>
 
-          <tbody>
+        <tbody>
 
             @foreach($users as $user)
 
             <tr>
                 <td>{{ $user->id }}</td>
-                <td><a href="{{ URL::route('user', $user->id) }}">{{ $user->name }}</a></td>
-                <td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
+                <td>
+                    <a href="{{ URL::route('user', $user->id) }}">{{ $user->name }}</a>
+                </td>
+                <td>
+                    <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
+                </td>
             </tr>
 
             @endforeach
 
-          </tbody>
+        </tbody>
 
-        </table>
+    </table>
 
-    </div>
+</div>
 
 @stop

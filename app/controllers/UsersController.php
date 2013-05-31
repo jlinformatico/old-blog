@@ -27,14 +27,14 @@ class UsersController extends BaseController {
                             ->withErrors($validation);
         } else {
             Users::insert(array(
-                'name' => Input::get('name'),
+                'name' => Input::get('nazwa'),
                 'email' => Input::get('email'),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ));
 
             return Redirect::to('users')
-                            ->with('message', 'Dodałeś nowy rekord!');
+                            ->with('message', '<b>Brawo!</b> Dodałeś nowy rekord!');
         }
 
     }

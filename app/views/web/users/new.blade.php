@@ -11,9 +11,10 @@
         <h3>Dodaj użytkownika</h3>
 
         @if($errors->count() > 0)
+
             <div class="alert alert-error" style="list-style: none;">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <p>{{ $errors->first('name', '<li>:message</li>') }}</p>
+                <p>{{ $errors->first('nazwa', '<li>:message</li>') }}</p>
                 <p>{{ $errors->first('email', '<li>:message</li>') }}</p>
             </div>
 
@@ -21,7 +22,7 @@
 
         {{ Form::open(array('url' => 'users/create')) }}
 
-        <p>{{ Form::label('name', 'Nazwa użytkownika: ') }} {{ Form::text('name') }}</p>
+        <p>{{ Form::label('nazwa', 'Nazwa użytkownika: ') }} {{ Form::text('nazwa') }}</p>
 
         <p>{{ Form::label('email', 'Adres e-mail: ') }} {{ Form::text('email') }}</p>
 
