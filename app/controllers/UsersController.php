@@ -11,7 +11,7 @@ class UsersController extends BaseController {
     public function get_user($id) {
         return View::make('web/users/show')
                     ->with('title', 'Dane użytkownika')
-                    ->with('users', Users::findOrFail($id));
+                    ->with('user', Users::findOrFail($id));
     }
 
     public function get_new() {
@@ -36,6 +36,12 @@ class UsersController extends BaseController {
             return Redirect::to('users')
                             ->with('message', '<b>Brawo!</b> Dodałeś nowy rekord!');
         }
+    }
 
+    public function delete_user() {
+        Users::find(Input::get('id'))->delete();
+
+        return Redirect::to('users')
+                        ->with('message', '<b>Brawo!</b> Usunąłeś rekord!');
     }
 }

@@ -8,11 +8,20 @@
 
     <div class="span9">
 
-        <h3>Dane użytkownika</h3>
+        <div class="span12">
 
-        Imię: {{ $users->name }}
-        <br />
-        E-mail: {{ $users->email }}
+            <h3>Dane użytkownika</h3>
+            Imię: {{ $user->name }}
+            <br />
+            E-mail: {{ $user->email }}
+            <br /><br />
+
+            {{ Form::open(array('url' => 'user/delete', 'method' => 'delete')) }}
+            {{ Form::hidden('id', $user->id) }}
+            {{ Form::submit('Usuń') }}
+            {{ Form::close() }}
+
+        </div>
 
     </div>
 @stop

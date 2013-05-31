@@ -76,7 +76,7 @@
 
             <!-- Start of content section -->
 
-            @yield('content')
+                @yield('content')
 
             <!-- End of content section -->
 
