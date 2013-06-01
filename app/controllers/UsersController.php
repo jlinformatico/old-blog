@@ -38,8 +38,8 @@ class UsersController extends BaseController {
         }
     }
 
-    public function delete_user() {
-        Users::find(Input::get('id'))->delete();
+    public function delete_user($id) {
+        Users::find($id)->delete();
 
         return Redirect::to('users')
                         ->with('message', '<b>Brawo!</b> Usunąłeś rekord!');

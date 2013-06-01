@@ -28,4 +28,4 @@ Route::get('users', array('as' => 'users', 'uses' => 'UsersController@get_index'
 Route::get('user/{id}', array('as' => 'user', 'uses' => 'UsersController@get_user'));
 Route::get('users/new', array('as' => 'new_user', 'uses' => 'UsersController@get_new'));
 Route::post('users/create', array('uses' => 'UsersController@post_create'));
-Route::delete('user/delete', array('uses' => 'UsersController@delete_user'));
+Route::delete('user/delete/{id}', array('uses' => 'UsersController@delete_user'));

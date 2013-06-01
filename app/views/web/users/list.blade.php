@@ -9,44 +9,55 @@
 
     <h3>Lista użytkowników</h3>
 
-    @if (Session::has('message'))
+    @if (count($users) > 0)
 
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{ Session::get('message') }}
-        </div>
+        @if (Session::has('message'))
 
-    @endif
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ Session::get('message') }}
+            </div>
 
-    <table class="table table-striped">
+        @endif
 
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nazwa</th>
-                <th>Adres e-mail</th>
-            </tr>
-        </thead>
+        <table class="table table-striped">
 
-        <tbody>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nazwa</th>
+                    <th>Adres e-mail</th>
+                </tr>
+            </thead>
 
-            @foreach($users as $user)
+            <tbody>
 
-            <tr>
-                <td>{{ $user->id }}</td>
-                <td>
-                    <a href="{{ URL::route('user', $user->id) }}">{{ $user->name }}</a>
-                </td>
-                <td>
-                    <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
-                </td>
-            </tr>
+                @foreach($users as $user)
 
-            @endforeach
+                <tr>
+                    <td>{{ $user->id }}</td>
+                    <td>
+                        <a href="{{ URL::route('user', $user->id) }}">{{ $user->name }}</a>
+                    </td>
+                    <td>
+                        <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
+                    </td>
+                </tr>
 
-        </tbody>
+                @endforeach
 
-    </table>
+            </tbody>
+
+        </table>
+
+        @else
+
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                Niestety ta tabela nie posiada danych.
+            </div>
+
+        @endif
 
 </div>
 
