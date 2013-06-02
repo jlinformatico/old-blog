@@ -11,12 +11,29 @@
         <div class="span12">
 
             <h3>Dane użytkownika</h3>
-            Imię: {{ $user->name }}
-            <br />
-            E-mail: {{ $user->email }}
-            <br /><br />
+            <table class="table table-condensed">
 
-            <a href="#myModal" role="button" class="btn" data-toggle="modal">Usuń</a>
+                <tbody>
+
+                    <tr>
+                        <td style="width: 20%;">ID</td>
+                        <td>{{ $user->id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nazwa użytkownika</td>
+                        <td>{{ $user->name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Adres email</td>
+                        <td>{{ $user->email }}</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <a href="#myModal2" role="button" class="btn" data-toggle="modal">Edytuj dane</a>
+            <a href="#myModal" role="button" class="btn btn-danger" data-toggle="modal">Usuń</a>
 
             <!-- Modal -->
             <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
