@@ -29,7 +29,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Anuluj</button>
-                    {{ Form::open(array('url' => 'user/delete/' . $user->id, 'method' => 'delete', 'style' => 'display: inline')) }}
+                    {{ Form::open(array('url' => 'users/destroy/' . $user->id, 'method' => 'delete', 'style' => 'display: inline')) }}
                     {{ Form::submit('Usuń', array('class' => 'btn btn-danger')) }}
                     {{ Form::close() }}
                 </div>

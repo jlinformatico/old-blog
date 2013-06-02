@@ -20,7 +20,7 @@
 
         @endif
 
-        {{ Form::open(array('url' => 'users/create')) }}
+        {{ Form::open(array('url' => 'users/store')) }}
 
         <p>{{ Form::label('nazwa', 'Nazwa użytkownika: ') }} {{ Form::text('nazwa') }}</p>
 

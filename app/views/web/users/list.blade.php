@@ -37,7 +37,7 @@
                 <tr>
                     <td>{{ $user->id }}</td>
                     <td>
-                        <a href="{{ URL::route('user', $user->id) }}">{{ $user->name }}</a>
+                        <a href="{{ URL::route('users_show', $user->id) }}">{{ $user->name }}</a>
                     </td>
                     <td>
                         <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>

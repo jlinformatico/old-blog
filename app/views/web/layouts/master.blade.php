@@ -65,7 +65,7 @@
                     <ul class="nav nav-list">
                         <li class="nav-header">Menu boczne</li>
                         <li>{{ HTML::link('users', 'Lista użytkowników') }}</li>
-                        <li>{{ HTML::link('users/new', 'Dodaj użytkownika') }}</li>
+                        <li>{{ HTML::link('users/create', 'Dodaj użytkownika') }}</li>
                     </ul>
                 </div>
             </div> <!-- End of span3 -->
