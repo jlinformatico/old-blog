@@ -39,8 +39,9 @@ class UsersController extends \BaseController {
                             ->withErrors($validation);
         } else {
             Users::insert(array(
-                'name' => Input::get('nazwa'),
+                'name' => Input::get('name'),
                 'email' => Input::get('email'),
+                'password' => Hash::make(Input::get('password')),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ));

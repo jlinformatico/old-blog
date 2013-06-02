@@ -12,19 +12,26 @@
 
         @if($errors->count() > 0)
 
-            <div class="alert alert-error" style="list-style: none;">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <p>{{ $errors->first('nazwa', '<li>:message</li>') }}</p>
-                <p>{{ $errors->first('email', '<li>:message</li>') }}</p>
-            </div>
+            @foreach($errors->all() as $error)
+
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ $error }}
+                </div>
+
+            @endforeach
 
         @endif
 
         {{ Form::open(array('url' => 'users/store')) }}
 
-        <p>{{ Form::label('nazwa', 'Nazwa użytkownika: ') }} {{ Form::text('nazwa') }}</p>
+        <p>{{ Form::label('name', 'Nazwa użytkownika: ') }} {{ Form::text('name') }}</p>
 
         <p>{{ Form::label('email', 'Adres e-mail: ') }} {{ Form::text('email') }}</p>
+
+        <p>{{ Form::label('password', 'Hasło: ') }} {{ Form::password('password') }}</p>
+
+        <p>{{ Form::label('password_confirmation', 'Potwierdzenie hasła: ') }} {{ Form::password('password_confirmation') }}</p>
 
         <p>{{ Form::submit('Dodaj', array('class' => 'btn btn-primary')) }}</p>
 
