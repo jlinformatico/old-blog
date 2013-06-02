@@ -2,4 +2,6 @@
 /vendor
 composer.phar
 composer.lock
+l4_app.sublime-project
+l4_app.sublime-workspace
 .DS_Store

@@ -16,7 +16,7 @@
             E-mail: {{ $user->email }}
             <br /><br />
 
-            <a href="#myModal" role="button" class="btn" data-toggle="modal">Usuń użytkownika</a>
+            <a href="#myModal" role="button" class="btn" data-toggle="modal">Usuń</a>
 
             <!-- Modal -->
             <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -30,18 +30,13 @@
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Anuluj</button>
                     {{ Form::open(array('url' => 'user/delete/' . $user->id, 'method' => 'delete', 'style' => 'display: inline')) }}
-                    {{ Form::submit('Usuń', array('class' => 'btn btn-primary')) }}
+                    {{ Form::submit('Usuń', array('class' => 'btn btn-danger')) }}
                     {{ Form::close() }}
                 </div>
             </div>
-        <!--
-            {{ Form::open(array('url' => 'user/delete', 'method' => 'delete')) }}
-            {{ Form::hidden('id', $user->id) }}
-            {{ Form::submit('Usuń') }}
-            {{ Form::close() }}
-        -->
 
         </div>
 
     </div>
+
 @stop
