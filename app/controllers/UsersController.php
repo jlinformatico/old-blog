@@ -9,7 +9,7 @@ class UsersController extends \BaseController {
      */
     public function index()
     {
-        return View::make('web/users/list')
+        return View::make('dashboard/categories/users/list')
                     ->with('title', 'Lista użytkowników')
                     ->with('users', Users::all());
     }
@@ -21,7 +21,7 @@ class UsersController extends \BaseController {
      */
     public function create()
     {
-        return View::make('web/users/new')
+        return View::make('dashboard/categories/users/new')
                     ->with('title', 'Dodaj użytkownika');
     }
 
@@ -39,7 +39,7 @@ class UsersController extends \BaseController {
                             ->withErrors($validation);
         } else {
             Users::insert(array(
-                'name' => Input::get('name'),
+                'username' => Input::get('username'),
                 'email' => Input::get('email'),
                 'password' => Hash::make(Input::get('password')),
                 'created_at' => date('Y-m-d H:i:s'),
@@ -59,7 +59,7 @@ class UsersController extends \BaseController {
      */
     public function show($id)
     {
-        return View::make('web/users/show')
+        return View::make('dashboard/categories/users/show')
                     ->with('title', 'Dane użytkownika')
                     ->with('user', Users::findOrFail($id));
     }

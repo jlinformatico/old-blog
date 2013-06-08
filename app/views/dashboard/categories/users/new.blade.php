@@ -1,4 +1,4 @@
-@extends('web.layouts.master')
+@extends('dashboard.layouts.master')
 
 @section('sidebar')
     @parent
@@ -25,7 +25,7 @@
 
         {{ Form::open(array('url' => 'users/store')) }}
 
-        <p>{{ Form::label('name', 'Nazwa użytkownika: ') }} {{ Form::text('name') }}</p>
+        <p>{{ Form::label('username', 'Nazwa użytkownika: ') }} {{ Form::text('username') }}</p>
 
         <p>{{ Form::label('email', 'Adres e-mail: ') }} {{ Form::text('email') }}</p>
 

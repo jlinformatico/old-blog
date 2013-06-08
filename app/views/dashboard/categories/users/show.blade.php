@@ -1,4 +1,4 @@
-@extends('web.layouts.master')
+@extends('dashboard.layouts.master')
 
 @section('sidebar')
     @parent
@@ -21,7 +21,7 @@
                     </tr>
                     <tr>
                         <td>Nazwa użytkownika</td>
-                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->username }}</td>
                     </tr>
                     <tr>
                         <td>Adres email</td>

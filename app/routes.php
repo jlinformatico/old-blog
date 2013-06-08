@@ -13,19 +13,69 @@
 
 /* Main routes */
 
-Route::get('/', function()
-{
-	return time();
+Route::get('/', array('as' => 'main', function() {
+    return 'Strona glowna';
+}));
+
+Route::get('dashboard', array('as' => 'dashboard', function() {
+    return View::make('dashboard/main/index')
+                ->with('title', 'Main dashboard');
+}))->before('auth');
+
+/*------------ Dashboard -------------- */
+
+/* Login / Logout */
+
+Route::get('login', array('as' => 'login', function() {
+    return View::make('dashboard/login/login')
+                ->with('title', 'Dashboard login');
+}))->before('guest');
+
+Route::post('login', function () {
+    $user = array(
+        'username' => Input::get('username'),
+        'password' => Input::get('password')
+    );
+
+
+    if (Auth::attempt($user, true)) {
+        return Redirect::route('dashboard')
+                        ->with('message', 'You are successfully logged in.');
+    } else {
+        return Redirect::route('login')
+            ->with('message', 'Your username/password combination was incorrect.');
+    }
+
+
 });
 
-/* Blog routes */
-
-Route::get('blog', array('as' => 'blog', 'uses' => 'BlogController@get_index'));
+Route::get('logout', array('as' => 'logout', function() {
+    Auth::logout();
+    return Redirect::route('login')
+        ->with('message', 'You are successfully logged out.');
+}))->before('auth');
 
 /* Users routes */
 
-Route::get('users', array('as' => 'users', 'uses' => 'UsersController@index'));
-Route::get('users/show/{id}', array('as' => 'users_show', 'uses' => 'UsersController@show'));
-Route::get('users/create', array('as' => 'users_create', 'uses' => 'UsersController@create'));
-Route::post('users/store', array('uses' => 'UsersController@store'));
-Route::delete('users/destroy/{id}', array('uses' => 'UsersController@destroy'));
+Route::get('users', array(
+    'as' => 'users',
+    'uses' => 'UsersController@index'
+))->before('auth');
+
+Route::get('users/show/{id}', array(
+    'as' => 'users_show',
+    'uses' => 'UsersController@show'
+))->before('auth');
+
+Route::get('users/create', array(
+    'as' => 'users_create',
+    'uses' => 'UsersController@create'
+))->before('auth');
+
+Route::post('users/store', array(
+    'uses' => 'UsersController@store'
+))->before('auth');
+
+Route::delete('users/destroy/{id}', array(
+    'uses' => 'UsersController@destroy'
+))->before('auth');

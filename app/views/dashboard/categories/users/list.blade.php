@@ -1,4 +1,4 @@
-@extends('web.layouts.master')
+@extends('dashboard.layouts.master')
 
 @section('sidebar')
     @parent
@@ -37,7 +37,7 @@
                 <tr>
                     <td>{{ $user->id }}</td>
                     <td>
-                        <a href="{{ URL::route('users_show', $user->id) }}">{{ $user->name }}</a>
+                        <a href="{{ URL::route('users_show', $user->id) }}">{{ $user->username }}</a>
                     </td>
                     <td>
                         <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>

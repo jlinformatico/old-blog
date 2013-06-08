@@ -5,7 +5,7 @@ class Users extends Eloquent {
     public $table = 'users';
 
     public static $rules = array(
-        'name' => 'required|min:4',
+        'username' => 'required|min:4',
         'email' => 'required|unique:users|email',
         'password' => 'required|alphanum|between:4,8|confirmed',
         'password_confirmation' => 'required|alphanum|between:4,8'

@@ -39,8 +39,13 @@
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         <li>{{ HTML::link('/', 'Start') }}</li>
-                        <li><a href="#">Blog</a></li>
-                        <li>{{ HTML::link('users', 'Admin') }}</li>
+                        @if(Auth::check())
+                            <li>{{ HTML::link('dashboard', 'Dashboard') }}</li>
+                            <li>{{ HTML::link('users', 'Users') }}</li>
+                            <li>{{ HTML::link('logout', 'Logout') }}</li>
+                        @else
+                            <li>{{ HTML::link('login', 'Login') }}</li>
+                        @endif
                     </ul>
                 </div> <!--/.nav-collapse -->
 
