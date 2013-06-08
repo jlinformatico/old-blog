@@ -10,7 +10,7 @@ class UsersController extends \BaseController {
     public function index()
     {
         return View::make('dashboard/categories/users/list')
-                    ->with('title', 'Lista użytkowników')
+                    ->with('title', 'Users list')
                     ->with('users', Users::all());
     }
 
