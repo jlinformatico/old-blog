@@ -26,34 +26,19 @@ Route::get('dashboard', array('as' => 'dashboard', function() {
 
 /* Login / Logout */
 
-Route::get('login', array('as' => 'login', function() {
-    return View::make('dashboard/login/login')
-                ->with('title', 'Dashboard login');
-}))->before('guest');
+Route::get('login', array(
+    'as' => 'login',
+    'uses' => 'LoginController@index'
+))->before('guest');
 
-Route::post('login', function () {
-    $user = array(
-        'username' => Input::get('username'),
-        'password' => Input::get('password')
-    );
+Route::post('login', array(
+    'uses' => 'LoginController@login'
+));
 
-
-    if (Auth::attempt($user, true)) {
-        return Redirect::route('dashboard')
-                        ->with('message', 'You are successfully logged in.');
-    } else {
-        return Redirect::route('login')
-            ->with('message', 'Your username/password combination was incorrect.');
-    }
-
-
-});
-
-Route::get('logout', array('as' => 'logout', function() {
-    Auth::logout();
-    return Redirect::route('login')
-        ->with('message', 'You are successfully logged out.');
-}))->before('auth');
+Route::get('logout', array(
+    'as' => 'logout',
+    'uses' => 'LoginController@logout'
+))->before('auth');
 
 /* Users routes */
 
